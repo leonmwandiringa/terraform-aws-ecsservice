@@ -25,6 +25,14 @@ variable "ecs_load_balancers" {
   default     = []
 }
 
+variable "service_connect_configuration" {
+  type = object({
+    enabled = bool
+    namespace = string
+  })
+  default = null
+  description = "service connect configuration"
+}
 variable "service_name" {
   type        = string
   description = "service name"

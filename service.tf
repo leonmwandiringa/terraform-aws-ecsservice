@@ -24,6 +24,14 @@ resource "aws_ecs_service" "default" {
     }
   }
 
+  dynamic "service_connect_configuration" {
+    for_each = var.service_connect_configuration != null ? [var.service_connect_configuration] : []
+    content {
+      enabled = service_connect_configuration.value.enabled
+      namespace = service_connect_configuration.value.namespace
+    }
+  }
+
   cluster        = var.ecs_cluster_arn
   propagate_tags = var.propagate_tags
   tags           = merge(
