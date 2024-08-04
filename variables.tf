@@ -29,6 +29,9 @@ variable "service_connect_configuration" {
   type = object({
     enabled = bool
     namespace = string
+    name = string
+    description = string
+    vpc_id = string
   })
   default = null
   description = "service connect configuration for inter service communication"
