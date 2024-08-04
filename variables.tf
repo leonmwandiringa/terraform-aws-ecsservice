@@ -31,7 +31,7 @@ variable "service_connect_configuration" {
     namespace = string
   })
   default = null
-  description = "service connect configuration"
+  description = "service connect configuration for inter service communication"
 }
 variable "service_name" {
   type        = string
