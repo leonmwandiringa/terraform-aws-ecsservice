@@ -25,15 +25,10 @@ variable "ecs_load_balancers" {
   default     = []
 }
 
-variable "service_connect_configuration" {
-  type = object({
-    enabled = bool
-    namespace = string
-    description = string
-    vpc_id = string
-  })
+variable "service_connect_namespace" {
+  type = string
   default = null
-  description = "service connect configuration for inter service communication"
+  description = "service connect namespace for inter service communication"
 }
 variable "service_name" {
   type        = string

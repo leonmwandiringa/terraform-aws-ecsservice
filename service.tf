@@ -25,10 +25,10 @@ resource "aws_ecs_service" "default" {
   }
 
   dynamic "service_connect_configuration" {
-    for_each = var.service_connect_configuration != null ? [var.service_connect_configuration] : []
+    for_each = var.service_connect_namespace != null ? [var.service_connect_namespace] : []
     content {
-      enabled = service_connect_configuration.value.enabled
-      namespace = service_connect_configuration.value.namespace
+      enabled = true
+      namespace = var.service_connect_namespace
     }
   }
 
