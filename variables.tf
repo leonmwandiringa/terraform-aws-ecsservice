@@ -29,7 +29,6 @@ variable "service_connect_configuration" {
   type = object({
     enabled = bool
     namespace = string
-    name = string
     description = string
     vpc_id = string
   })
