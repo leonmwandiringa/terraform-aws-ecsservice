@@ -172,11 +172,11 @@ variable "volumes" {
   default     = []
 }
 
-variable "assign_public_ip" {
-  type        = bool
-  description = "Assign a public IP address to the ENI (Fargate launch type only). Valid values are `true` or `false`. Default `false`"
-  default     = false
-}
+# variable "assign_public_ip" {
+#   type        = bool
+#   description = "Assign a public IP address to the ENI (Fargate launch type only). Valid values are `true` or `false`. Default `false`"
+#   default     = false
+# }
 
 variable "propagate_tags" {
   type        = string
