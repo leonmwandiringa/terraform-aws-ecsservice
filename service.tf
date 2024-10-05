@@ -6,8 +6,8 @@ resource "aws_ecs_service" "default" {
   deployment_minimum_healthy_percent = var.deployment_minimum_healthy_percent
   health_check_grace_period_seconds  = var.health_check_grace_period_seconds
   launch_type                        = length(var.ec2_capacity_provider) > 0 ? null : var.launch_type 
-  platform_version                   = var.launch_type == "FARGATE" ? var.platform_version : null
-  scheduling_strategy                = var.launch_type == "FARGATE" ? "REPLICA" : var.scheduling_strategy
+  platform_version                   = var.launch_type == "FARGATE" && length(var.ec2_capacity_provider) == 0 ? var.platform_version : null
+  scheduling_strategy                = var.scheduling_strategy
   enable_ecs_managed_tags            = var.enable_ecs_managed_tags
   iam_role                           = var.service_role_arn
   wait_for_steady_state              = var.wait_for_steady_state
