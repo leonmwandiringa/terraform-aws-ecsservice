@@ -14,6 +14,15 @@ variable "ecs_cluster_arn" {
   description = "The ARN of the ECS cluster where service will be provisioned"
 }
 
+variable "ec2_capacity_provider" {
+  type = list(object({
+    name = string
+    base = number
+    weight = number
+  }))
+  default = []
+}
+
 variable "ecs_load_balancers" {
   type = list(object({
     container_name   = string

@@ -24,6 +24,15 @@ resource "aws_ecs_service" "default" {
     }
   }
 
+  dynamic "capacity_provider_strategy" {
+    for_each = var.ec2_capacity_provider
+    content {
+      capacity_provider = capacity_provider_strategy.value.name
+      base              = capacity_provider_strategy.value.base
+      weight            = capacity_provider_strategy.value.weight
+    }
+  }
+
   dynamic "service_connect_configuration" {
     for_each = var.service_connect_namespace != null ? [var.service_connect_namespace] : []
     content {
