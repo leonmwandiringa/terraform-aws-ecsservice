@@ -1,7 +1,7 @@
 resource "aws_ecs_task_definition" "default" {
   family                   = "${var.service_name}-task"
   container_definitions    = var.container_definition_json
-  requires_compatibilities = [var.launch_type]
+  requires_compatibilities = length(var.ec2_capacity_provider) > 0 ? ["EC2"] : [var.launch_type]
   network_mode             = var.network_mode
   cpu                      = var.task_cpu
   memory                   = var.task_memory
