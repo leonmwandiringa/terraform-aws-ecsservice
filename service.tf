@@ -59,7 +59,7 @@ resource "aws_ecs_service" "default" {
     content {
       security_groups  = var.security_group_ids
       subnets          = var.subnet_ids
-      # assign_public_ip = var.assign_public_ip
+      assign_public_ip = var.assign_public_ip
     }
   }
 
